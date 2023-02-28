@@ -1,4 +1,5 @@
 import designCli as dc
+
 # Input
 
 def inputHandle() :
@@ -36,16 +37,17 @@ def inputNandDimension():
     return n, dimension
 
 # Output
+    # Output Text App
 def outputHandle(min_distance, min_dots, nCal, time) :
                 
-    print("Jarak terdekat adalah :", min_distance)
-    print("Pasangan Titik terdekat adalah :")
+    print("Jarak terdekat adalah              :", min_distance)
+    print("Pasangan Titik terdekat adalah     :")
 
-    # Print titik
+    # Print pasangan titik
     printTitik(min_dots)
 
-    print("Jumlah perhitungan jarak euclidean : ", nCal)
-    print("Waktu perhitungan : ", time, "milidetik")
+    print("Jumlah perhitungan jarak euclidean :", nCal)
+    print("Waktu perhitungan                  :", time, "milidetik")
     
 def printTitik(arr_dot) :
     for i in range(len(arr_dot)) :
@@ -59,3 +61,31 @@ def printTitik(arr_dot) :
             print(" dan ", end = "")
         else :
             print()
+
+    # Splash
+
+def StartScreen() :
+    print(dc.B_Magenta,"""
+ $$$$$$\ $$\                                      $$\           $$$$$$$\ $$\           $$\                                         
+$$  __$$\$$ |                                     $$ |          $$  __$$\\__|          $$ |                                        
+$$ /  \__$$ |$$$$$$\  $$$$$$$\ $$$$$$\  $$$$$$$\$$$$$$\         $$ |  $$ $$\ $$$$$$$\$$$$$$\   $$$$$$\ $$$$$$$\  $$$$$$$\ $$$$$$\  
+$$ |     $$ $$  __$$\$$  _____$$  __$$\$$  _____\_$$  _|        $$ |  $$ $$ $$  _____\_$$  _|  \____$$\$$  __$$\$$  _____$$  __$$\ 
+$$ |     $$ $$ /  $$ \$$$$$$\ $$$$$$$$ \$$$$$$\   $$ |          $$ |  $$ $$ \$$$$$$\   $$ |    $$$$$$$ $$ |  $$ $$ /     $$$$$$$$ |
+$$ |  $$\$$ $$ |  $$ |\____$$\$$   ____|\____$$\  $$ |$$\       $$ |  $$ $$ |\____$$\  $$ |$$\$$  __$$ $$ |  $$ $$ |     $$   ____|
+\$$$$$$  $$ \$$$$$$  $$$$$$$  \$$$$$$$\$$$$$$$  | \$$$$  |      $$$$$$$  $$ $$$$$$$  | \$$$$  \$$$$$$$ $$ |  $$ \$$$$$$$\\$$$$$$$\ 
+ \______/\__|\______/\_______/ \_______\_______/   \____/       \_______/\__\_______/   \____/ \_______\__|  \__|\_______|\_______|
+          """, dc.Reset)
+    print("{: ^144}".format(dc.B_Yellow + dc.Underline + "Akmal Mahardika Nurwahyu Pratama - 13521070") + dc.Reset + "\n")
+
+def BoxOpenScreen(name) :
+    print(dc.Bold + "┌{}{:^24}{}┐".format("─"*53,name,"─"*53) + dc.Reset + "\n")
+
+def BoxCloseScreen(name) :
+    print("\n" + dc.Bold + "└{}{:^24}{}┘".format("─"*53,name,"─"*53) + dc.Reset + "\n")
+    
+    
+
+if __name__ == "__main__" :
+    StartScreen()
+    BoxOpenScreen("Devide and Conquer")
+    BoxCloseScreen("Devide and Conquer")

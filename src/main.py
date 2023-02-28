@@ -7,26 +7,33 @@ import bruteforce as bf
 import tools as tl
 import DnCTitik as DnC
 import ioApp as io
+import visualizer as vis
 
 if __name__ == "__main__":
+    io.StartScreen()
+    
     n, dimension = io.inputHandle()
-    
     arr_dots = tl.randomizeDot(n, dimension)
-    nCal = 0
-        
-    print()
-    nCal = 0
-    min_dis = 0
-    ts = time.time()
-    min_dis, min_dots, nCal  = bf.bruteforceDots(arr_dots)
-    te = time.time()
-    
-    io.outputHandle(min_dis, min_dots, nCal, (te - ts)*1000)
-    
+
     tl.mergeSort(arr_dots)
-    print()
-    ts = time.time()
-    min_dis, min_dots, nCal  = DnC.devidenConquer(arr_dots, nCal)
-    te = time.time()
     
-    io.outputHandle(min_dis, min_dots, nCal, (te - ts)*1000)
+    
+    dnc_nCal = 0
+    dnc_timeS = time.time()
+    dnc_min_dis, dnc_min_dots, dnc_nCal  = DnC.devidenConquer(arr_dots, dnc_nCal)
+    dnc_timeE = time.time()
+        
+    io.BoxOpenScreen("Devide and Conquer")
+    io.outputHandle(dnc_min_dis, dnc_min_dots, dnc_nCal, (dnc_timeE - dnc_timeS)*1000)
+    io.BoxCloseScreen("Devide and Conquer")
+    vis.visualize(arr_dots, dnc_min_dots)
+    
+    bf_nCal = 0
+    bf_timeS = time.time()
+    bf_min_dis, bf_min_dots, bf_nCal  = bf.bruteforceDots(arr_dots)
+    bf_timeE = time.time()
+    
+    io.BoxOpenScreen("Brute Force")    
+    io.outputHandle(bf_min_dis, bf_min_dots, bf_nCal, (bf_timeE - bf_timeS)*1000)
+    io.BoxCloseScreen("Brute Force")
+    vis.visualize(arr_dots, bf_min_dots)

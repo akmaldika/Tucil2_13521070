@@ -33,7 +33,7 @@ def euclideanDistance(dot1, dot2) :
     """ Menghitung Eucledian Distance antara 2 titik, n Dimensi """
     distance = 0
     for i in range(len(dot1)) :
-        distance += (dot1[i] - dot2[i])**2
+        distance += abs((dot1[i] - dot2[i])**2)
     return math.sqrt(distance)        
 
 def mergeSort(arr_dot) :
