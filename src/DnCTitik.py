@@ -71,14 +71,15 @@ def closestPairStrip(left_arr, right_arr, close_dis, close_dots, mid, nCal) :
     dots = close_dots
     dis = close_dis
     
-    # Titik kiri hanayan mengecek titik kanan garis khayalan
+    # Titik kiri hanayan mengecek titik kanan garis khayalan dan sebaliknya (dengan jarak < close_dis)
     for i in range(n_left) :
         for j in range(n_left, n_left+n_right) :
-            temp_dis = tools.euclideanDistance(strip_arr[i], strip_arr[j])
-            nCal += 1
-            if temp_dis < dis :
-                dis = temp_dis
-                dots = [strip_arr[i], strip_arr[j]]
+            if (tools.isCloser(strip_arr[i], strip_arr[j], dis)) :
+                temp_dis = tools.euclideanDistance(strip_arr[i], strip_arr[j])
+                nCal += 1
+                if temp_dis < dis :
+                    dis = temp_dis
+                    dots = [strip_arr[i], strip_arr[j]]
     return dis, dots, nCal
 
 def stripClose(l_arr, r_arr, mid, close_dis) :
