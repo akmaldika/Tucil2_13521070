@@ -13,64 +13,58 @@ def randomizeDot(n, dimension) :
 
 def randomizeDot2(n, dimension) :
     """ same as randomizeDot but using for loop """
-    list_point = np.zeros((n, dimension)) 
+    list_point = np.zeros((dimension, n))
+    print(list_point) 
     for i in range(n) :
         for j in range(dimension) :
             list_point[i][j] = random.uniform(constant.MIN_RAND, constant.MAX_RAND)
     return list_point
 
-def euclideanDistance(dot1, dot2, close_dis = None) :
-    """ Menghitung Eucledian Distance antara 2 titik, n Dimensi | 
-    (Overload) akan berhenti jika jaraknya lebih besar dari close_dis mengembalikan UNDEFINED """
+def euclideanDistance(dot1, dot2) :
+    """ Menghitung Eucledian Distance antara 2 titik, n Dimensi """
     distance = 0
-    if (close_dis == None) :
-        for i in range(len(dot1)) :
-            distance += (dot1[i] - dot2[i])**2
-        return math.sqrt(distance)
-    else :
-        flag = True
-        for i in range(len(dot1)) :
-            distance += (dot1[i] - dot2[i])**2
-            if (distance > close_dis**2) :
-                flag = False
-                break
-            
-        return math.sqrt(distance) if flag else constant.UNDEFINED
- 
-def mergeSortbyX(arr_dot) :
+    for i in range(len(dot1)) :
+        distance += (dot1[i] - dot2[i])**2
+    return math.sqrt(distance)        
+
+def mergeSort(arr_dot) :
     """ Melakukan merge sort sebuah array of titik berdasarkan nilai x1 """
-    length = len(arr_dot)//2
-    if length > 1:
+
+    if len(arr_dot) > 1:
         # Devide
-        mid = length//2
+        mid = len(arr_dot)//2
         L = arr_dot[:mid]
         R = arr_dot[mid:]
-        mergeSortbyX(L)
-        mergeSortbyX(R)
+        mergeSort(L)
+        mergeSort(R)
         
         # Counquer
         i = j = k = 0
         l_len = len(L)
         r_len = len(R)
+        temp_arr = np.zeros((len(arr_dot), len(arr_dot[0])))
+        
         while i < l_len and j < r_len :
             if L[i][0] < R[j][0]:
-                arr_dot[k] = L[i]
+                temp_arr[k] = L[i]
                 i += 1
             else:
-                arr_dot[k] = R[j]
+                temp_arr[k] = R[j]
                 j += 1
             k += 1
         
         while i < l_len :
-            arr_dot[k] = L[i]
+            temp_arr[k] = L[i]
             i += 1
             k += 1
             
         while j < r_len :
-            arr_dot[k] = R[j]
+            temp_arr[k] = R[j]
             j += 1
             k += 1
-            
+        
+        for i in range(len(arr_dot)):
+            arr_dot[i] = temp_arr[i]
         
         
 
@@ -79,7 +73,7 @@ if __name__ == "__main__":
     print(constant.MAX_RAND, constant.MIN_RAND)
     
     start = time.time()
-    array = randomizeDot(8,5)
+    array = randomizeDot(5,3)
     print(array)
     stop = time.time()
     print("Time elapsed 1: ", stop - start)
@@ -92,5 +86,5 @@ if __name__ == "__main__":
     print(f"fastest : {1 if stop - start < stop2 - start2 else 2} \n") """
     # 20th try : fastest = 1
     print(len(array))
-    mergeSortbyX(array)
+    mergeSort(array)
     print(array)

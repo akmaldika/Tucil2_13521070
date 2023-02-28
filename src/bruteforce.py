@@ -1,11 +1,10 @@
 # File bruteforce.py
 import tools
-import constant
 
 def bruteforceDots(arr_dot) :
     nCal = 0
     dis = -1
-    close_dis = constant.UNDEFINED
+    close_dis = 99999
     close_dots = []
     
     for i in range(len(arr_dot)) :
