@@ -29,6 +29,7 @@ def OneDPlot(arr_dots, min_dots) :
     plt.plot(arr_dots, np.zeros_like(arr_dots), 'bo')
     plt.plot(min_dots, np.zeros_like(min_dots), 'ro')
     connectDots(min_dots,1)
+    plt.xlabel('X')
     plt.show()
 
 def TwoDPlot(arr_dots, min_dots) :
@@ -39,29 +40,24 @@ def TwoDPlot(arr_dots, min_dots) :
     plt.scatter(arr_dots[:,0], arr_dots[:,1], marker='o', color='b')
     plt.scatter(min_dots[:,0], min_dots[:,1], marker='o', color='r')
     connectDots(min_dots,2)
+    plt.xlabel('X')
+    plt.ylabel('Y')
     plt.show()
 
 def ThreeDPlot(arr_dots, min_dots) :
     """ Plotting 3D array of Titik """
-    plt.figure().add_subplot(111, projection='3d')
-    ax = plt.gca()
+    fig = plt.figure()
+    ax = fig.add_subplot(projection='3d')
     ax.set_title("Visualisasi Titik")
-    plt.xlim(c.MIN_RAND, c.MAX_RAND)
-    plt.ylim(c.MIN_RAND, c.MAX_RAND)
-    # print(arr_dots)
-    # print(min_dots)
-    
-    # ax = plt.axes(projection='3d')
-    # ax.scatter3D(arr_dots[:,0], arr_dots[:,1], arr_dots[:,2], marker='o', color='b')
-    # ad = plt.axes(projection='3d')
-    # ad.scatter3D(min_dots[:,0], min_dots[:,1], min_dots[:,2], marker='o', color='r')    
-    plt.scatter(arr_dots[:,0], arr_dots[:,1], arr_dots[:,2], color='b')
-    
-    plt.scatter(min_dots[:,0], min_dots[:,1], min_dots[:,2], color='r')
-    connectDots(min_dots,3)
+    ax.scatter(arr_dots[:,0], arr_dots[:,1], arr_dots[:,2], color='b')
+    ax.scatter(min_dots[:,0], min_dots[:,1], min_dots[:,2], color='r')
+    connectDots(min_dots,3, ax)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
     plt.show()
 
-def connectDots(arr_dots, dim) :
+def connectDots(arr_dots, dim, ax = None) :
     """ Menghubungkan pasangan titik yang ada di dalam array """
     if dim == 1 :
         for i in range(0, len(arr_dots), 2) :
@@ -70,8 +66,10 @@ def connectDots(arr_dots, dim) :
         for i in range(0, len(arr_dots), 2) :
             plt.plot([arr_dots[i,0], arr_dots[i+1,0]], [arr_dots[i,1], arr_dots[i+1,1]], 'r-')
     elif dim == 3 :
+        # fig = plt.figure()
+        # ax = fig.add_subplot(projection='3d')
         for i in range(0, len(arr_dots), 2) :
-            plt.plot([arr_dots[i,0], arr_dots[i+1,0]], [arr_dots[i,1], arr_dots[i+1,1]], [arr_dots[i,2], arr_dots[i+1,2]], 'r-')
+            ax.plot([arr_dots[i,0], arr_dots[i+1,0]], [arr_dots[i,1], arr_dots[i+1,1]], [arr_dots[i,2], arr_dots[i+1,2]], 'r-')
 
 
 if __name__ == "__main__" :
