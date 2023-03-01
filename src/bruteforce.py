@@ -2,6 +2,7 @@
 import tools
 
 def bruteforceDots(arr_dot) :
+    """ Mencari pasangan titk terdekat dengan algoritma brute force """
     nCal = 0
     dis = -1
     close_dis = 99999
