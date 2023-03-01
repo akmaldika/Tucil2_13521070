@@ -79,7 +79,14 @@ Progress proyek ini (Selesai) : ![100%](https://geps.dev/progress/10)
 ```Improvment proyek ini : (proses)```
 
 ## Acknowledgements
-Terima kasih kepada Tuhan yang Maha Esa, Terima kasih kepada para dosen pengampu Bu Ulfa, Pak Rinaldi, dan Pak Rila Terima kasih kepada Tim Asisten Kuliah IF2211
+Terima kasih kepada Tuhan yang Maha Esa karena-Nya saya dapat menyelesaikan project ini.
+
+Terima kasih kepada para dosen pengampu 
+    Bu Ulfa (Dr. Nur Ulfa Maulidevi ST,M.Sc),
+    Pak Rinaldi (Dr. Ir. Rinaldi Munir, M.T.), dan 
+    Pak Rila (Dr.Ir. Rila Mandala, M.Eng.).
+
+Terima kasih kepada Tim Asisten Kuliah IF2211.
 
 ## Author
 13521050 [Akmal Mahardika Nurwahyu Pratama](https://github.com/akmaldika)
