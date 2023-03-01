@@ -1,7 +1,6 @@
 # File : main.py
 # Application to find nearest 2 point from n point in 3D space and calculate distance between them
 
-import os
 import time
 import bruteforce as bf
 import tools as tl
@@ -13,7 +12,7 @@ if __name__ == "__main__":
     io.StartScreen()
     
     n, dimension = io.inputHandle()
-    arr_dots = tl.randomizeDot(n, dimension)
+    arr_dots = tl.randomizeDot2(n, dimension)
 
     tl.mergeSort(arr_dots)
     

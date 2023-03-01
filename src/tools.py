@@ -13,8 +13,7 @@ def randomizeDot(n, dimension) :
 
 def randomizeDot2(n, dimension) :
     """ same as randomizeDot but using for loop """
-    list_point = np.zeros((dimension, n))
-    print(list_point) 
+    list_point = np.zeros((n, dimension))
     for i in range(n) :
         for j in range(dimension) :
             list_point[i][j] = random.uniform(constant.MIN_RAND, constant.MAX_RAND)

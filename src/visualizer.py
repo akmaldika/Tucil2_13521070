@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
 import numpy as np
+import constant as c
 
 def visualize(arr_dots, min_dots) :
     """ Visualisasi array of Titik """
@@ -22,6 +22,8 @@ def visualize(arr_dots, min_dots) :
 
 def OneDPlot(arr_dots, min_dots) :
     """ Plotting 1D array of Titik """
+    ax = plt.gca()
+    ax.set_title("Visualisasi Titik")
     plt.plot(arr_dots, np.zeros_like(arr_dots), 'bo')
     plt.plot(min_dots, np.zeros_like(min_dots), 'ro')
     connectDots(min_dots,1)
@@ -29,6 +31,9 @@ def OneDPlot(arr_dots, min_dots) :
 
 def TwoDPlot(arr_dots, min_dots) :
     """ Plotting 2D array of Titik """
+    ax = plt.gca()
+    ax.set_title("Visualisasi Titik")
+    
     plt.scatter(arr_dots[:,0], arr_dots[:,1], marker='o', color='b')
     plt.scatter(min_dots[:,0], min_dots[:,1], marker='o', color='r')
     connectDots(min_dots,2)
@@ -36,18 +41,26 @@ def TwoDPlot(arr_dots, min_dots) :
 
 def ThreeDPlot(arr_dots, min_dots) :
     """ Plotting 3D array of Titik """
-    plt.figure().add_subplot(projection='3d')
+    plt.figure().add_subplot(111, projection='3d')
+    ax = plt.gca()
+    ax.set_title("Visualisasi Titik")
+    plt.xlim(c.MIN_RAND, c.MAX_RAND)
+    plt.ylim(c.MIN_RAND, c.MAX_RAND)
+    print(arr_dots)
+    print(min_dots)
+    
     # ax = plt.axes(projection='3d')
     # ax.scatter3D(arr_dots[:,0], arr_dots[:,1], arr_dots[:,2], marker='o', color='b')
     # ad = plt.axes(projection='3d')
-    # ad.scatter3D(min_dots[:,0], min_dots[:,1], min_dots[:,2], marker='o', color='r')
-    plt.scatter(arr_dots[:,0], arr_dots[:,1], arr_dots[:,2], marker='o', color='b')
-    plt.scatter(min_dots[:,0], min_dots[:,1], min_dots[:,2], marker='o', color='r')
+    # ad.scatter3D(min_dots[:,0], min_dots[:,1], min_dots[:,2], marker='o', color='r')    
+    plt.scatter(arr_dots[:,0], arr_dots[:,1], arr_dots[:,2], color='b')
+    
+    plt.scatter(min_dots[:,0], min_dots[:,1], min_dots[:,2], color='r')
     connectDots(min_dots,3)
     plt.show()
 
 def connectDots(arr_dots, dim) :
-    """ Menghubungkan semua pasangan titik yang ada di dalam array """
+    """ Menghubungkan pasangan titik yang ada di dalam array """
     if dim == 1 :
         for i in range(0, len(arr_dots), 2) :
             plt.plot([arr_dots[i], arr_dots[i+1]], [0,0], 'r-')
@@ -76,11 +89,32 @@ if __name__ == "__main__" :
         [10,11,12]
     ])
     
-    print(x)
-    print(y)
+    # print(x)
+    # print(y)
+    # print(min3[:,0])
     # plt.scatter(x, y, color='k', marker='o') 
     # plt.show()
     
     # OneDPlot(x, [[1],[2]])
     # TwoDPlot(x, min2)
-    visualize(x, min3)
+    # visualize(x, min3)
+    
+    np.random.seed(42)
+
+    xs = np.random.uniform(0, 10, 100)
+
+    ys = np.random.uniform(0, 10, 100)
+
+    zs = np.random.uniform(0, 10, 100)
+    
+    print(xs)
+    print(ys)
+    print(type(zs))
+
+    fig = plt.figure()
+
+    ax = fig.add_subplot(111, projection='3d')
+
+    ax.scatter(xs,ys,zs)
+
+    plt.show()

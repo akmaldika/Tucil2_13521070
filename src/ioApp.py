@@ -4,10 +4,11 @@ import designCli as dc
 
 def inputHandle() :
     n, dimension = inputNandDimension()
-    
+    # n, dimendion = fileinput()
     return n, dimension
 
 def inputNandDimension():
+    """ Menangani input dari pengguna berupa dimensi dan banyak titik]"""
     while (True) :
         n = input("Masukkan jumlah titik  : ")
         try :
@@ -39,9 +40,9 @@ def inputNandDimension():
 # Output
     # Output Text App
 def outputHandle(min_distance, min_dots, nCal, time) :
-                
+    """ Mencetak hasil perhitungan program """
     print("Jarak terdekat adalah              :", min_distance)
-    print("Pasangan Titik terdekat adalah     :")
+    print("Pasangan Titik terdekat adalah     :", end=' ')
 
     # Print pasangan titik
     printTitik(min_dots)
@@ -50,6 +51,7 @@ def outputHandle(min_distance, min_dots, nCal, time) :
     print("Waktu perhitungan                  :", time, "milidetik")
     
 def printTitik(arr_dot) :
+    """ mencetak pasangan titik dalam bentuk (x1, y1,...) dan (x2, y2,...) """
     for i in range(len(arr_dot)) :
         point = arr_dot[i]
         print(f"( {point[0] :.4f}", end = "")
@@ -65,6 +67,7 @@ def printTitik(arr_dot) :
     # Splash
 
 def StartScreen() :
+    """ Spalsh dari Startscreen """
     print(dc.B_Magenta,"""
  $$$$$$\ $$\                                      $$\           $$$$$$$\ $$\           $$\                                         
 $$  __$$\$$ |                                     $$ |          $$  __$$\\__|          $$ |                                        
@@ -78,9 +81,11 @@ $$ |  $$\$$ $$ |  $$ |\____$$\$$   ____|\____$$\  $$ |$$\       $$ |  $$ $$ |\__
     print("{: ^144}".format(dc.B_Yellow + dc.Underline + "Akmal Mahardika Nurwahyu Pratama - 13521070") + dc.Reset + "\n")
 
 def BoxOpenScreen(name) :
+    """ Box pembatas (buka) """
     print(dc.Bold + "┌{}{:^24}{}┐".format("─"*53,name,"─"*53) + dc.Reset + "\n")
 
 def BoxCloseScreen(name) :
+    """ Box pembatas (tutup) """
     print("\n" + dc.Bold + "└{}{:^24}{}┘".format("─"*53,name,"─"*53) + dc.Reset + "\n")
     
     
