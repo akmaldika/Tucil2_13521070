@@ -60,7 +60,7 @@ def printTitik(arr_dot) :
         print(" )", end = "")
             
         if i % 2 == 0:
-            print(" dan ", end = "")
+            print(dc.B_Green+" dan ", end = "" + dc.Reset)
         else :
             print()
 

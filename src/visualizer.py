@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import constant as c
+import designCli as dc
 
 def visualize(arr_dots, min_dots) :
     """ Visualisasi array of Titik """
@@ -17,6 +18,7 @@ def visualize(arr_dots, min_dots) :
         ThreeDPlot(arr_dots, min_dots)
         return True
     else :
+        print(dc.B_Red + "Tidak dapat melakukan visualisasi" + dc.Reset)
         return False
 
 

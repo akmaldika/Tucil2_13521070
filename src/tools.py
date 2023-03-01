@@ -19,14 +19,24 @@ def randomizeDot2(n, dimension) :
             list_point[i][j] = random.uniform(constant.MIN_RAND, constant.MAX_RAND)
     return list_point
 
+# def isCloser(dot1, dot2, close_dis) :
+#     """ True jika jarak abs(dot1[i]-dot2[i]) < close_dis**2 untuk i 0..len(dot1) """
+#     flag = True
+#     for i in range(len(dot1)) :
+#         if abs(dot1[i]-dot2[i]) > close_dis :
+#             flag = False
+#             break
+#     return flag
+
 def isCloser(dot1, dot2, close_dis) :
     """ True jika jarak abs(dot1[i]-dot2[i]) < close_dis**2 untuk i 0..len(dot1) """
-    flag = True
-    for i in range(len(dot1)) :
-        if abs(dot1[i]-dot2[i]) > close_dis :
-            flag = False
-            break
-    return flag
+    if len(dot1) == 1 :
+        return abs(dot1[0]-dot2[0]) < close_dis
+    else :
+        mid = len(dot1)//2
+        return isCloser(dot1[:mid], dot2[:mid], close_dis) and isCloser(dot1[mid:], dot2[mid:], close_dis)
+
+
 
 def euclideanDistance(dot1, dot2) :
     """ Menghitung Eucledian Distance antara 2 titik, n Dimensi """
