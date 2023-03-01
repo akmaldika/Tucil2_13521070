@@ -33,7 +33,7 @@ def devidenConquer(arr_dot, nCal) :
         return close_dis, close_dots, nCal
 
 def baseCaseDNC(arr_dot, nCal) :
-    """ Mencari jarak terdekat antara 2 titik dari array 3 atau 2 titik """
+    """ Basecase dari devidenConquer | Mencari jarak terdekat antara 2 titik dari array 3 atau 2 titik """
     dis = tools.euclideanDistance(arr_dot[0], arr_dot[1])
     nCal += 1
     dots = [arr_dot[0], arr_dot[1]]
