@@ -46,8 +46,8 @@ def ThreeDPlot(arr_dots, min_dots) :
     ax.set_title("Visualisasi Titik")
     plt.xlim(c.MIN_RAND, c.MAX_RAND)
     plt.ylim(c.MIN_RAND, c.MAX_RAND)
-    print(arr_dots)
-    print(min_dots)
+    # print(arr_dots)
+    # print(min_dots)
     
     # ax = plt.axes(projection='3d')
     # ax.scatter3D(arr_dots[:,0], arr_dots[:,1], arr_dots[:,2], marker='o', color='b')
