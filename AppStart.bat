@@ -1,4 +1,3 @@
 @echo off
-main.py
+python -B "src\main.py"
 
-for /d /s/ 
