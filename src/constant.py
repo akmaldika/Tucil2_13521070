@@ -1,4 +1,4 @@
 # declare constant
 
-MAX_RAND = 1000
-MIN_RAND = -1000
+MAX_RAND = 500
+MIN_RAND = -500
